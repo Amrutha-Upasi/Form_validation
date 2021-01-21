@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="dist/css/bootstrap.css">
+	<script>
+		function test()
+		{
+			var status = true;
+			var fname = document.getElementById("fname").value.trim();
+			if(fname=="")
+			{
+				document.getElementById("fname").style.borderColor ="red";
+				document.getElementById("fnameerror").innerHTML ="Please Enter First Name !";
+				status=false; // false means be on the same page
+
+			}
+
+			else
+				{
+					document.getElementById("fname").style.borderColor="";
+					document.getElementById("fnameerror").innerHTML ="";
+				}
+
+
+				// for last name
+
+				var lname = document.getElementById("lname").value.trim();
+			    if(fname=="")
+			{
+				document.getElementById("lname").style.borderColor ="red";
+				document.getElementById("lnameerror").innerHTML ="Please Enter  Last Name !";
+				status=false;
+
+			}
+
+			else
+				{
+					document.getElementById("lname").style.borderColor="";
+					document.getElementById("lnameerror").innerHTML ="";
+				}
+
+				//for mobile
+
+				var mobile = document.getElementById("mobile").value.trim();
+			    if( (mobile=="")  || (mobile.length!=10) || (isNaN(mobile)))
+			{
+				document.getElementById("mobile").style.borderColor ="red";
+				document.getElementById("mobileerror").innerHTML ="Please Enter Mobile No !";
+				status=false;
+
+			}
+
+			else
+				{
+					document.getElementById("mobile").style.borderColor="";
+					document.getElementById("mobileerror").innerHTML ="";
+				}
+
+				// for email
+
+				var email = document.getElementById("email").value.trim();
+				var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+			    if((email=="") || (! pattern.test(email)))
+			{
+				document.getElementById("email").style.borderColor ="red";
+				document.getElementById("emailerror").innerHTML ="Please Enter Email !";
+				status=false;
+
+			}
+
+			else
+				{
+					document.getElementById("email").style.borderColor="";
+					document.getElementById("emailerror").innerHTML ="";
+				}
+
+				// gender validation
+				var male = document.getElementById("male").checked;
+				var female = document.getElementById("female").checked;
+				if( (male==false) && (female==false) )
+				{
+					document.getElementById("gendererror").innerHTML = "What is your gender!"
+				}
+				else
+				{
+					document.getElementById("gendererror").innerHTML = "";
+				}
+
+				// checkbox tnc validation
+
+				var tnc = document.getElementById("tnc").checked;
+				var female = document.getElementById("female").checked;
+				if( tnc==false )
+				{
+					document.getElementById("tncerror").innerHTML = "Terms & condition!"
+				}
+				else
+				{
+					document.getElementById("tncerror").innerHTML = "";
+				}
+
+
+			return status;
+			                      // true means go to next page, flase means be on the same page
+		}
+
+		function cleardata()
+		{
+			document.getElementById("tncerror").innerHTML = "";
+			document.getElementById("gendererror").innerHTML = "";
+
+			document.getElementById("email").style.borderColor = "";
+			document.getElementById("emailerror").innerHTML = "";
+
+			document.getElementById("mobile").style.borderColor="";
+		    document.getElementById("mobileerror").innerHTML ="";
+
+		    document.getElementById("fname").style.borderColor="";
+			document.getElementById("fnameerror").innerHTML ="";
+
+
+			document.getElementById("lname").style.borderColor="";
+			document.getElementById("lnameerror").innerHTML ="";
+
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<h3 class="text-center">Form validation Example</h3>
+
+				<form action ="save.php" method="POST" onsubmit="return test()">
+					<div class="form-group">
+						<label>First Name</label>
+						<input type="text" class="form-control input-sm" id="fname">
+						<i style="color:red;" id="fnameerror"></i>
+					</div>
+
+					<div class="form-group">
+						<label>Last Name</label>
+						<input type="text" class="form-control input-sm" id="lname">
+						<i  style=" color:red;"id ="lnameerror"></i>
+					</div>
+
+					<div class="form-group">
+						<label>Mobile no</label>
+					<input type="text" class="form-control input-sm" id="mobile" maxlength="10">
+						<i style="color:red;" id ="mobileerror"></i>
+					</div>
+
+
+					<div class="form-group">
+						<label>e-mail id</label>
+						<input type="text" class="form-control input-sm" id="email">
+						<i style="color:red;"id ="emailerror"></i>
+					</div>
+
+
+					<div class="form-group">
+						<label>Gender</label>
+					<p>
+						<input type="radio" name="gender" id="male" value="M"> Male
+						<input type="radio" name="gender" id="female" value ="F"> Female
+					</p>
+						<i style="color:red;" id ="gendererror"></i>
+					</div>
+
+
+					<div class="form-group">
+						<label>Terms and Conditions</label>
+					<p>
+						<input type="checkbox" name="tnc" id="tnc" value="Yes">Agree
+						
+					</p>
+						<i style="color:red;" id ="tncerror"></i>
+					</div>
+
+
+					<div class="form-group text-center">
+						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="reset" class="btn btn-danger" onclick="cleardata()">clear</button>
+					</div>
+				</form>
+				
+			</div><!--6 ends here-->
+			<div class="col-md-3"></div>
+			
+		</div> <!--row-->
+		
+	</div> <!--container end-->
+
+</body>
+</html>
